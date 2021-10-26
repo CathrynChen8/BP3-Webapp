@@ -36,4 +36,17 @@ app = Flask(__name__)
 # http://localhost:5000
 
 def main():
-    return "hello there"
+    return render_template('main_better.html')
+
+@app.route('/submit_message/', methods=['POST', 'GET'])
+def ask():
+    if request.method == 'GET':
+        return render_template('ask.html')
+    else:
+        try:
+            return render_template('ask.html', name=request.form['name'], student=request.form['student'])
+        except:
+            return render_template('ask.html')
+
+
+
