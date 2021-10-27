@@ -39,14 +39,19 @@ def main():
     return render_template('main_better.html')
 
 @app.route('/submit_message/', methods=['POST', 'GET'])
-def ask():
+def submit():
     if request.method == 'GET':
-        return render_template('ask.html')
+        return render_template('submit.html')
     else:
         try:
-            return render_template('ask.html', name=request.form['name'], student=request.form['student'])
+            return render_template('submit.html', name=request.form['name'], message=request.form['message'])
         except:
-            return render_template('ask.html')
+            return render_template('submit.html')
+
+
+@app.route('/view/', methods=['POST', 'GET'])
+def view():
+    return render_template('view.html')
 
 
 
