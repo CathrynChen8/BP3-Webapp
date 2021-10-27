@@ -54,4 +54,32 @@ def view():
     return render_template('view.html')
 
 
+from flask import Blueprint, current_app, g, render_template, redirect, request, flash, url_for, session
+from flask.cli import with_appcontext
+
+from werkzeug.security import check_password_hash, generate_password_hash
+
+import sqlite3
+import click
+
+import random
+import string
+
+message_bp = Blueprint('message', __name__, url_prefix='/message')
+
+def get_message_db():
+    if 'db' not in g:
+        g.message_db = sqlite3.connect('message_db.sqlite')
+
+    return g.message_db
+
+
+    
+
+
+
+
+
+
+
 
